@@ -22,5 +22,8 @@
     "@types/http-errors": "^1.6.2",
     "@types/morgan": "^1.7.37",
     "nodemon": "^1.19.2"
+  },
+  "engines": {
+    "node": "10.15.3"
   }
 }
