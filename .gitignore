@@ -1,0 +1,11 @@
+/node_modules
+/dist
+node_modules
+/coverage
+/.DS_Store
+/config.env
+config.env
+.env
+
+.DS_Store
+.DS_Stores
