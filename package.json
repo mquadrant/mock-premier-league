@@ -1,0 +1,13 @@
+{
+  "name": "mock-premier-league",
+  "version": "1.0.0",
+  "description": "Sterling Bank Project Test",
+  "main": "index.js",
+  "author": "Benjamin Mark <mquadrant@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "husky": "^3.0.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
+  }
+}
