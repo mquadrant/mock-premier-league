@@ -1,6 +1,18 @@
 #!/usr/bin/env node
 
 /**
+ * Read environment variables
+ */
+require('dotenv').config()
+
+/**
+ * Believe it or not, reading process.env is expensive in NODE.js
+ * https://github.com/nodejs/node/issues/3104
+ * We want to cache process.env to a regular object since we don't expect it to change at runtime anyway.
+ */
+process.env = JSON.parse(JSON.stringify(process.env))
+
+/**
  * Module dependencies.
  */
 
