@@ -48,6 +48,10 @@ const userSchema: Schema = new Schema(
             },
             required: [true, 'User should be attached to a role'],
         },
+        club: {
+            type: Schema.Types.ObjectId,
+            ref: 'Team',
+        },
     },
     { timestamps: true }
 )
