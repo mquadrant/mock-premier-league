@@ -1,5 +1,6 @@
 import express from 'express'
 const router = express.Router()
+import { userSignup } from '../../controllers/usersController'
 
 /* GET users listing. */
 router.get('/', function(_req, res, _next) {
