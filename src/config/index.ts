@@ -1,7 +1,10 @@
 import dotenv from 'dotenv'
 
 // Set the NODE_ENV to 'development' by default
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+let env = `${process.env.NODE_ENV}`
+env = process.env.NODE_ENV || 'DEVELOPMENT'
+
+let envString = env.toUpperCase()
 
 const envFound = dotenv.config()
 if (!envFound) {
@@ -18,7 +21,7 @@ export default {
     /**
      * That long string from atlas
      */
-    databaseURL: process.env.MONGODB_URI,
+    databaseURL: process.env[`ATLAS_URI_${envString}`],
 
     /**
      * Your secret sauce
