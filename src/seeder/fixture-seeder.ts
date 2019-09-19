@@ -4,8 +4,8 @@ import Fixture from '../models/fixtures'
 const fixtures = [
     new Fixture({
         _id: '5d4155cfcd68f4086d8df460',
-        homeTeam: 'Chelsea',
-        awayTeam: 'Liverpool',
+        homeTeam: '5d4155cfcd68f4086d8df470',
+        awayTeam: '5d4155cfcd68f4086d8df472',
         homeGoals: 2,
         awayGoals: 1,
         matchTime: new Date(2019, 8, 10, 2, 30, 20),
@@ -16,8 +16,8 @@ const fixtures = [
     }),
     new Fixture({
         _id: '5d4155cfcd68f4086d8df461',
-        homeTeam: 'Southampton',
-        awayTeam: 'AFC Bournemouth',
+        homeTeam: '5d4155cfcd68f4086d8df473',
+        awayTeam: '5d4155cfcd68f4086d8df474',
         homeGoals: 0,
         awayGoals: 0,
         matchTime: new Date(2019, 9, 20, 3, 30, 25),
@@ -27,8 +27,8 @@ const fixtures = [
     }),
     new Fixture({
         _id: '5d4155cfcd68f4086d8df462',
-        homeTeam: 'Arsenal',
-        awayTeam: 'Aston Villa',
+        homeTeam: '5d4155cfcd68f4086d8df471',
+        awayTeam: '5d4155cfcd68f4086d8df475',
         homeGoals: 0,
         awayGoals: 0,
         matchTime: new Date(2019, 9, 22, 3, 30, 25),
@@ -38,8 +38,8 @@ const fixtures = [
     }),
     new Fixture({
         _id: '5d4155cfcd68f4086d8df463',
-        homeTeam: 'West Ham United',
-        awayTeam: 'Manchester United',
+        homeTeam: '5d4155cfcd68f4086d8df476',
+        awayTeam: '5d4155cfcd68f4086d8df477',
         homeGoals: 0,
         awayGoals: 0,
         matchTime: new Date(2019, 9, 22, 3, 30, 25),
@@ -49,8 +49,8 @@ const fixtures = [
     }),
     new Fixture({
         _id: '5d4155cfcd68f4086d8df465',
-        homeTeam: 'Tottenham Hotspur',
-        awayTeam: 'Crystal Palace',
+        homeTeam: '5d4155cfcd68f4086d8df478',
+        awayTeam: '5d4155cfcd68f4086d8df479',
         homeGoals: 4,
         awayGoals: 0,
         matchTime: new Date(2019, 9, 14, 6, 30, 0),
@@ -61,8 +61,8 @@ const fixtures = [
     }),
     new Fixture({
         _id: '5d4155cfcd68f4086d8df466',
-        homeTeam: 'AFC Bournemouth',
-        awayTeam: 'Everton',
+        homeTeam: '5d4155cfcd68f4086d8df474',
+        awayTeam: '5d4155cfcd68f4086d8df480',
         homeGoals: 3,
         awayGoals: 1,
         matchTime: new Date(2019, 9, 15, 10, 30, 0),
