@@ -8,7 +8,7 @@ const users = [
         lastName: 'Taiwo',
         email: 'ahmed@gmail.com',
         password: '1234ahmed',
-        club: 'Chelsea',
+        club: '5d4155cfcd68f4086d8df471',
         role: 'USER',
     }),
     new User({
@@ -17,7 +17,7 @@ const users = [
         lastName: 'Arinze',
         email: 'segun12@gmail.com',
         password: '1234segun',
-        club: 'Arsenal',
+        club: '5d4155cfcd68f4086d8df472',
         role: 'USER',
     }),
     new User({
@@ -26,7 +26,7 @@ const users = [
         lastName: 'Mark',
         email: 'mquadrant@gmail.com',
         password: 'markben',
-        club: 'Manchester City',
+        club: '5d4155cfcd68f4086d8df473',
         role: 'ADMIN',
     }),
 ]
