@@ -6,18 +6,21 @@ import env from './../config'
 
 //Connection to mongoDB
 const uri = `${env.databaseURL}`
-
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
+    useUnifiedTopology: true,
 })
 
 const connection = mongoose.connection
 connection.once('open', () => {
     console.log('MongoDB database connection established successfully!')
 })
+connection.on('error', () => {
+    console.log('Error Connecting To Database')
+})
 
-const seederModules: any = [...UserSeeder, ...FixtureSeeder, ...TeamSeeder]
+const seederModules: any = [...UserSeeder, ...TeamSeeder, ...FixtureSeeder]
 
 let counter = 0
 for (let index = 0; index < seederModules.length; index++) {
