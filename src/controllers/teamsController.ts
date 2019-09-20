@@ -38,7 +38,7 @@ export const addTeam = async function(
 }
 
 export const getAllTeams = async function(
-    req: Request,
+    _req: Request,
     res: Response,
     _next: NextFunction
 ) {
@@ -54,6 +54,31 @@ export const getAllTeams = async function(
             status: 'success',
             results: teams.length,
             data: teams,
+        })
+    } catch (error) {
+        return res.status(404).json({
+            status: 'fail',
+            message: error,
+        })
+    }
+}
+
+export const removeTeam = async function(
+    req: Request,
+    res: Response,
+    _next: NextFunction
+) {
+    try {
+        const team = await Team.findOne({ _id: req.params.teamId })
+        if (!team) {
+            return res.status(401).json({
+                status: 'fail',
+                message: "Team doesn't exist!",
+            })
+        }
+        await Team.deleteOne({ _id: req.params.teamId })
+        return res.status(204).json({
+            status: 'success',
         })
     } catch (error) {
         return res.status(404).json({
