@@ -1,5 +1,4 @@
 import User from '../models/users'
-
 // Constructing each user in an array
 const users = [
     new User({
