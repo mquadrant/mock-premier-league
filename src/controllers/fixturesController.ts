@@ -65,11 +65,30 @@ export const getAllFixtures = async function(
 }
 
 //Deleting fixture
-export const removeFixture = function(
+export const removeFixture = async function(
     req: Request,
     res: Response,
-    next: NextFunction
-) {}
+    _next: NextFunction
+) {
+    try {
+        const fixture = await Fixture.findOne({ _id: req.params.fixtureId })
+        if (!fixture) {
+            return res.status(401).json({
+                status: 'fail',
+                message: "Fixture doesn't exist!",
+            })
+        }
+        await Fixture.deleteOne({ _id: req.params.fixtureId })
+        return res.status(204).json({
+            status: 'success',
+        })
+    } catch (error) {
+        return res.status(404).json({
+            status: 'fail',
+            message: error,
+        })
+    }
+}
 
 //Updating a fixture
 export const editFixture = function(
