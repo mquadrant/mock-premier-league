@@ -14,9 +14,9 @@ router.post('/', addTeam)
 router.get('/', getAllTeams)
 /* GET single Team. */
 router.get('/:teamId', viewSingleTeam)
-/* PATCH journal updating. */
-router.put('/:teamId', editTeam)
-/* DELETE deleting a journal by id. */
+/* PATCH Team updating. */
+router.patch('/:teamId', editTeam)
+/* DELETE deleting a team by id. */
 router.delete('/:teamId', removeTeam)
 
 export default router
