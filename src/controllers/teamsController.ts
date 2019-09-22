@@ -132,3 +132,30 @@ export const editTeam = async function(
         }
     }
 }
+
+//Viewing a single team
+export const viewSingleTeam = async function(
+    req: Request,
+    res: Response,
+    _next: NextFunction
+) {
+    try {
+        const team = await Team.findById(req.params.teamId)
+        if (!team) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Team does not exist',
+            })
+        } else {
+            return res.status(200).json({
+                status: 'success',
+                data: team,
+            })
+        }
+    } catch (error) {
+        return res.status(404).json({
+            status: 'fail',
+            message: error,
+        })
+    }
+}
