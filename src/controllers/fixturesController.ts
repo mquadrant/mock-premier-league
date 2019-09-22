@@ -94,8 +94,44 @@ export const removeFixture = async function(
 export const editFixture = function(
     req: Request,
     res: Response,
-    next: NextFunction
-) {}
+    _next: NextFunction
+) {
+    let clone = Object.assign({}, req.body)
+    delete clone.userData
+    const { error } = validateEditTeam(clone)
+    if (error) {
+        // send a 422 error response if validation fails
+        return res.status(422).json({
+            status: 'error',
+            message: 'Invalid request data',
+            data: clone,
+        })
+    } else {
+        try {
+            const teamExist = await Team.findById(req.params.teamId)
+            if (!teamExist) {
+                return res.status(401).json({
+                    status: 'fail',
+                    message: "Journal doesn't exist!",
+                })
+            }
+            const team = await Team.findByIdAndUpdate(
+                req.params.teamId,
+                clone,
+                { new: true }
+            )
+            return res.status(201).json({
+                status: 'success',
+                data: team,
+            })
+        } catch (error) {
+            return res.status(404).json({
+                status: 'fail',
+                message: error,
+            })
+        }
+    }
+}
 
 //Viewing a single fixture
 export const viewSingleFixture = async function(
