@@ -98,8 +98,28 @@ export const editFixture = function(
 ) {}
 
 //Viewing a single fixture
-export const viewSingleFixture = function(
+export const viewSingleFixture = async function(
     req: Request,
     res: Response,
-    next: NextFunction
-) {}
+    _next: NextFunction
+) {
+    try {
+        const fixture = await Fixture.findById(req.params.fixtureId)
+        if (!fixture) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Fixture does not exist',
+            })
+        } else {
+            return res.status(200).json({
+                status: 'success',
+                data: fixture,
+            })
+        }
+    } catch (error) {
+        return res.status(404).json({
+            status: 'fail',
+            message: error,
+        })
+    }
+}
