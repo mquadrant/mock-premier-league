@@ -8,7 +8,7 @@ export interface ITeam extends Document {
     headCoach: string
     founded: string
     nickName?: string
-    players: IPlayer[]
+    players?: IPlayer[]
 }
 
 export interface IPlayer extends Document {
