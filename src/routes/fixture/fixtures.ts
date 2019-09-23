@@ -15,10 +15,10 @@ router.post('/', checkAuth, adminAccess, addFixture)
 /* GET fixture . */
 router.get('/', checkAuth, getAllFixtures)
 /* GET single fixture. */
-router.get('/:fixtureId', checkAuth, removeFixture)
+router.get('/:fixtureId', checkAuth, viewSingleFixture)
 /* PATCH fixture updating. */
 router.patch('/:fixtureId', checkAuth, adminAccess, editFixture)
 /* DELETE deleting a fixture by id. */
-router.delete('/:fixtureId', checkAuth, adminAccess, viewSingleFixture)
+router.delete('/:fixtureId', checkAuth, adminAccess, removeFixture)
 
 export default router
