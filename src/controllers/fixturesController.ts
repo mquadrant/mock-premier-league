@@ -1,6 +1,7 @@
 import Fixture from '../models/fixtures'
 import { Request, Response, NextFunction } from 'express'
 import { validateFixture } from '../routes/fixture/fixtureValidation'
+import Teams from '../models/teams'
 
 //Adding Fixture
 export const addFixture = async function(
@@ -131,6 +132,16 @@ export const viewSingleFixture = async function(
 ) {
     try {
         const fixture = await Fixture.findById(req.params.fixtureId)
+            .populate({
+                path: 'homeTeam',
+                model: Teams,
+                select: '-createdAt -updatedAt -__v',
+            })
+            .populate({
+                path: 'awayTeam',
+                model: Teams,
+                select: '-createdAt -updatedAt -__v',
+            })
         if (!fixture) {
             return res.status(404).json({
                 status: 'fail',
