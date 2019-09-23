@@ -1,4 +1,4 @@
-import Joi, { object } from 'joi'
+import Joi from 'joi'
 
 function validateTeam(createTeam: Express.Request) {
     // define joi validation schema for Team
