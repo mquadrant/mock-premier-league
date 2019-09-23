@@ -91,45 +91,35 @@ export const removeFixture = async function(
 }
 
 //Updating a fixture
-export const editFixture = function(
+export const editFixture = async function(
     req: Request,
     res: Response,
     _next: NextFunction
 ) {
     let clone = Object.assign({}, req.body)
     delete clone.userData
-    const { error } = validateEditTeam(clone)
-    if (error) {
-        // send a 422 error response if validation fails
-        return res.status(422).json({
-            status: 'error',
-            message: 'Invalid request data',
-            data: clone,
-        })
-    } else {
-        try {
-            const teamExist = await Team.findById(req.params.teamId)
-            if (!teamExist) {
-                return res.status(401).json({
-                    status: 'fail',
-                    message: "Journal doesn't exist!",
-                })
-            }
-            const team = await Team.findByIdAndUpdate(
-                req.params.teamId,
-                clone,
-                { new: true }
-            )
-            return res.status(201).json({
-                status: 'success',
-                data: team,
-            })
-        } catch (error) {
-            return res.status(404).json({
+    try {
+        const fixtureExist = await Fixture.findById(req.params.fixtureId)
+        if (!fixtureExist) {
+            return res.status(401).json({
                 status: 'fail',
-                message: error,
+                message: "Fixture doesn't exist!",
             })
         }
+        const fixture = await Fixture.findByIdAndUpdate(
+            req.params.fixtureId,
+            clone,
+            { new: true }
+        )
+        return res.status(201).json({
+            status: 'success',
+            data: fixture,
+        })
+    } catch (error) {
+        return res.status(404).json({
+            status: 'fail',
+            message: error,
+        })
     }
 }
 
