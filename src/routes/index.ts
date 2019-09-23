@@ -3,6 +3,7 @@ import usersRouter from './user/users'
 import authRouter from './auth/auth'
 import teamRouter from './team/teams'
 import fixtureRouter from './fixture/fixtures'
+import searchRouter from './search/search'
 const router = express.Router()
 
 /* GET home page. */
@@ -21,5 +22,8 @@ router.use('/teams', teamRouter)
 
 /* FIXTURE Routes. */
 router.use('/fixtures', fixtureRouter)
+
+/* SEARCH Routes. */
+router.use('/search', searchRouter)
 
 export default router
