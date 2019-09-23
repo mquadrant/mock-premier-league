@@ -22,6 +22,7 @@ const teamSchema: Schema = new Schema(
         clubName: {
             type: String,
             required: true,
+            unique: [true, 'club name should be unique'],
         },
         about: {
             type: String,
