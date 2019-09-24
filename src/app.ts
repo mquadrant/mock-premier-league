@@ -1,6 +1,8 @@
 import createError from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
 import session from 'express-session'
+import connectRedis from 'connect-redis'
+import redis from 'redis'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -19,21 +21,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 //Redis Configuration
-const redisPass = `${process.env[`REDIS_CONN_PASS`]}`
-const redisHost = `${process.env[`REDIS_ENDPOINT`]}`
-const redisPort = parseInt(`${process.env[`REDIS_CONN_PORT`]}`)
-
-const client = redis.createClient({
-    port: redisPort,
-    host: redisHost,
-    password: redisPass,
-})
-client.on('connect', () => {
-    console.log('connected to Redis...')
-})
-client.on('error', err => {
-    console.log('Error ' + err)
-})
+const redisStore = connectRedis(session)
+const client = redis.createClient()
 
 //Connection to mongoDB
 const uri = `${env.databaseURL}`
@@ -51,6 +40,21 @@ connection.once('open', () => {})
 connection.on('error', () => {
     console.log('Error Connecting To Database')
 })
+
+// creating new redis store for sessioning.
+app.use(
+    session({
+        secret: <any>env.jwtSecret,
+        store: new redisStore({
+            host: 'localhost',
+            port: 6379,
+            client: client,
+            ttl: 1800,
+        }),
+        saveUninitialized: false,
+        resave: false,
+    })
+)
 
 //REST route
 app.use('/api/v1', indexRouter)
