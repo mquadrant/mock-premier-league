@@ -1,5 +1,6 @@
 import createError from 'http-errors'
 import express, { Request, Response, NextFunction } from 'express'
+import session from 'express-session'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
@@ -16,6 +17,23 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+//Redis Configuration
+const redisPass = `${process.env[`REDIS_CONN_PASS`]}`
+const redisHost = `${process.env[`REDIS_ENDPOINT`]}`
+const redisPort = parseInt(`${process.env[`REDIS_CONN_PORT`]}`)
+
+const client = redis.createClient({
+    port: redisPort,
+    host: redisHost,
+    password: redisPass,
+})
+client.on('connect', () => {
+    console.log('connected to Redis...')
+})
+client.on('error', err => {
+    console.log('Error ' + err)
+})
 
 //Connection to mongoDB
 const uri = `${env.databaseURL}`
