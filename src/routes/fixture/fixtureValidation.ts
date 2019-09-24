@@ -1,4 +1,4 @@
-import Joi from 'Joi'
+import Joi from 'joi'
 
 function validateFixture(editFixture: Express.Request) {
     // define joi validation schema for Team
