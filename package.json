@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "yarn tsc",
     "start": "./bin/www",
     "dev": "nodemon ./bin/www",
     "test": "jest --runInBand",
