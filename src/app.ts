@@ -21,7 +21,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 //Redis Configuration
-const redisUri = `${process.env.HEROKU_REDIS}`
+const redisUri = `${process.env.REDIS_URL}`
 const redisStore = connectRedis(session)
 const client = redis.createClient(redisUri)
 
